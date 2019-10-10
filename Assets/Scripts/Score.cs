@@ -11,7 +11,7 @@ public class Score : MonoBehaviour
 
 	public Text timeLeftLabel;
 	public Text playerScoreLabel;
-
+	
     // Update is called once per frame
     void Update()
     {	
@@ -26,14 +26,13 @@ public class Score : MonoBehaviour
     }
 
 	void OnTriggerEnter2D (Collider2D trigger) {
-		Debug.Log("Reached the end of the level.");
-		CountScore();
+		if (trigger.gameObject.tag == "Player") {
+			CountScore();
+		}
 	}
 
 	void CountScore() {
-		playerScore += (int) timeLeft;
-		Debug.Log("Player score is " + playerScore);
-		UpdateUI();
+		IncreaseScore((int) timeLeft);
 
 		// SceneController.SwitchScene("SampleScene");
 	}
@@ -44,6 +43,11 @@ public class Score : MonoBehaviour
 		
 		playerScoreLabel.text = "Score: " + playerScore.ToString();
 	
+	}
+
+	public void IncreaseScore(int amount) {
+		playerScore += amount;
+		UpdateUI();
 	}
 
 	

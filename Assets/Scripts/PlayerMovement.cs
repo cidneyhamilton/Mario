@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Character
 {
 	public int Speed = 10;
 	public int JumpForce = 1250;
@@ -11,12 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
 	private GroundChecker GroundChecker;
 	
-	private Rigidbody2D rb;
-	private SpriteRenderer sr;
-	
-	void Start() {
-		rb = GetComponent<Rigidbody2D>();
-		sr = GetComponent<SpriteRenderer>();
+	protected void Start() {
+		base.Start();
 		GroundChecker = GetComponent<GroundChecker>();
 	}
 	

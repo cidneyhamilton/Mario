@@ -2,20 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : Character
 {
 
 	public int EnemySpeed;
 
 	public int xMoveDirection;
 
-	private Rigidbody2D rb;
-	private SpriteRenderer sr;
-	
-	void Start() {
-		rb = gameObject.GetComponent<Rigidbody2D>();
-		sr = gameObject.GetComponent<SpriteRenderer>();
-	}
 	
     // Update is called once per frame
     void Update()
@@ -30,9 +23,7 @@ public class EnemyMovement : MonoBehaviour
 		
 		if (hit.distance < 0.7f) {
 			Flip();
-		}
-									 
-
+		}									 
 	}
 
 	void Flip() {
