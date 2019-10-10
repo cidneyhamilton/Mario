@@ -8,11 +8,19 @@ public class EnemyMovement : Character
 	public int EnemySpeed;
 
 	public int xMoveDirection;
+
+	bool isDead = false;
 	
     // Update is called once per frame
     void Update()
     {
-		Chase();
+		if (isDead) {
+			// Don't Move
+		} else {
+			Chase();
+		}
+
+		
     }
 
 	void Chase() {
@@ -20,11 +28,11 @@ public class EnemyMovement : Character
 
 		rb.velocity = new Vector2(xMoveDirection, 0) * EnemySpeed;
 		
-		if (hit.distance < 0.7f) {
+		if (hit.distance < 0.5f) {
 			Flip();
 			if (hit.collider.tag == "Player") {
 				// Kill Player
-				Destroy(hit.collider.gameObject);
+				hit.collider.GetComponent<PlayerHealth>().Die();
 			}
 		}									 
 	}
@@ -36,7 +44,14 @@ public class EnemyMovement : Character
 			xMoveDirection = 1;
 		}
 
-		sr.flipX = !sr.flipX;
-		
+		sr.flipX = !sr.flipX;		
+	}
+
+	public void Die() {
+		rb.AddForce(Vector2.right * 200);
+		rb.freezeRotation = false;
+		rb.gravityScale = 8f;
+		GetComponent<BoxCollider2D>().enabled = false;
+		this.isDead = true;
 	}
 }

@@ -59,13 +59,13 @@ public class PlayerMovement : Character
 
 	void PlayerRaycast() {
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
-		if (hit.distance < RAYCAST_HIT_DISTANCE && hit.collider.tag == "Enemy") {
+		if (hit != null && hit.collider != null && hit.distance < RAYCAST_HIT_DISTANCE && hit.collider.tag == "Enemy") {
 			Debug.Log("Squished enemy");
 
-			// TODO: Death animation
-			Destroy(hit.collider.gameObject);
-
 			rb.AddForce(transform.up * BounceForce);
+			
+			hit.collider.gameObject.GetComponent<EnemyMovement>().Die();
+
 		}
 	}
 	
