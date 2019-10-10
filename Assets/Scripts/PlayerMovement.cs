@@ -58,15 +58,27 @@ public class PlayerMovement : Character
 	}
 
 	void PlayerRaycast() {
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
-		if (hit != null && hit.collider != null && hit.distance < RAYCAST_HIT_DISTANCE && hit.collider.tag == "Enemy") {
-			Debug.Log("Squished enemy");
 
-			rb.AddForce(transform.up * BounceForce);
-			
-			hit.collider.gameObject.GetComponent<EnemyMovement>().Die();
-
+		RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up);
+		if (rayUp != null && rayUp.collider != null && rayUp.distance < RAYCAST_HIT_DISTANCE) {
+			if (rayUp.collider.tag == "LootBox") {
+				// Destroy this box
+				Destroy(rayUp.collider.gameObject);
+			}
 		}
+		
+		RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down);
+		if (rayDown != null && rayDown.collider != null && rayDown.distance < RAYCAST_HIT_DISTANCE) {
+			if (rayDown.collider.tag == "Enemy") {
+				HitEnemy(rayDown.collider.gameObject);
+			} 
+		}
+	}
+
+	// Handles player jumping on the enemy
+	void HitEnemy(GameObject enemy) {
+		rb.AddForce(transform.up * BounceForce);
+		enemy.GetComponent<EnemyMovement>().Die();	
 	}
 	
 }
