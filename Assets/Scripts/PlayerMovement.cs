@@ -6,10 +6,13 @@ public class PlayerMovement : Character
 {
 	public int Speed = 10;
 	public int JumpForce = 1250;
+	public int BounceForce = 1000;
 
 	private bool flipped = false;
 
 	private GroundChecker GroundChecker;
+
+	const float RAYCAST_HIT_DISTANCE = 0.9f;
 	
 	protected void Start() {
 		base.Start();
@@ -19,6 +22,7 @@ public class PlayerMovement : Character
 	void FixedUpdate() {
 		Move();
 		Jump();
+		PlayerRaycast();
 	}
 
 	void Move() {
@@ -51,6 +55,18 @@ public class PlayerMovement : Character
 		flipped = !flipped;
 		sr.flipX = flipped;
 		
+	}
+
+	void PlayerRaycast() {
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
+		if (hit.distance < RAYCAST_HIT_DISTANCE && hit.collider.tag == "Enemy") {
+			Debug.Log("Squished enemy");
+
+			// TODO: Death animation
+			Destroy(hit.collider.gameObject);
+
+			rb.AddForce(transform.up * BounceForce);
+		}
 	}
 	
 }

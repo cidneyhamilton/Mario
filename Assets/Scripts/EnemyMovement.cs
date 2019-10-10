@@ -8,7 +8,6 @@ public class EnemyMovement : Character
 	public int EnemySpeed;
 
 	public int xMoveDirection;
-
 	
     // Update is called once per frame
     void Update()
@@ -23,6 +22,10 @@ public class EnemyMovement : Character
 		
 		if (hit.distance < 0.7f) {
 			Flip();
+			if (hit.collider.tag == "Player") {
+				// Kill Player
+				Destroy(hit.collider.gameObject);
+			}
 		}									 
 	}
 

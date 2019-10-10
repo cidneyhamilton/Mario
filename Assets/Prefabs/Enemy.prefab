@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2338773219641952408}
   - component: {fileID: 2338773219641952405}
   - component: {fileID: 2338773219641952404}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2338773219641952404
 BoxCollider2D:
   m_ObjectHideFlags: 0
