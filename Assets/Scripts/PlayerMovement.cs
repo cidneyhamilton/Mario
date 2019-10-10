@@ -9,12 +9,15 @@ public class PlayerMovement : MonoBehaviour
 
 	private bool flipped = false;
 
+	private GroundChecker GroundChecker;
+	
 	private Rigidbody2D rb;
 	private SpriteRenderer sr;
 	
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
+		GroundChecker = GetComponent<GroundChecker>();
 	}
 	
 	void FixedUpdate() {
@@ -42,14 +45,14 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	void Jump() {
-		if (Input.GetButtonDown("Jump")) {
+		if (Input.GetButtonDown("Jump") && GroundChecker.isGrounded) {
 			rb.AddForce(Vector2.up * JumpForce);
+			GroundChecker.isGrounded = false;
 		}
 	}
 
 	void Flip() {
 		flipped = !flipped;
-
 		sr.flipX = flipped;
 		
 	}
