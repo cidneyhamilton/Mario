@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyMovement : Character
 {
 
-	public int EnemySpeed;
+	public int EnemySpeed = 1;
 
-	public int xMoveDirection;
+	public int xMoveDirection = -1;
 
 	bool isDead = false;
 
@@ -26,9 +26,10 @@ public class EnemyMovement : Character
     }
 
 	void Chase() {
+		rb.velocity = new Vector2(xMoveDirection, 0) * EnemySpeed;
+		
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(xMoveDirection, 0));
 
-		rb.velocity = new Vector2(xMoveDirection, 0) * EnemySpeed;
 		
 		if (hit.distance < HIT_DISTANCE) {
 			Flip();

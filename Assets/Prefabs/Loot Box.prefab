@@ -156,3 +156,5 @@ MonoBehaviour:
   HasPowerUp: 0
   spawnPoint: {fileID: 74591202}
   coinPrefab: {fileID: 528119890, guid: 4626ea13cb51d4e0d9713b6fb406c251, type: 3}
+  boxPrefab: {fileID: 5714362767871965631, guid: 03894767387f5cdf588e163c79b1167a,
+    type: 3}
