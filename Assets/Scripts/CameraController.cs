@@ -18,11 +18,12 @@ public class CameraController : MonoBehaviour
 
 	void TrackPlayer() {
 		player = GameObject.FindWithTag("Player");
-		
-		float x = Mathf.Clamp(player.transform.position.x, xMin, xMax);
-		float y = Mathf.Clamp(player.transform.position.y, yMin, yMax);
-
-		transform.position = new Vector3(x, y, transform.position.z);
+		if (player != null) {
+			float x = Mathf.Clamp(player.transform.position.x, xMin, xMax);
+			float y = Mathf.Clamp(player.transform.position.y, yMin, yMax);
+			
+			transform.position = new Vector3(x, y, transform.position.z);
+		}
 	}
 	
 }

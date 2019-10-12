@@ -67,12 +67,13 @@ public class PlayerMovement : Character
 		RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up, RAYCAST_HIT_DISTANCE);
 		if (rayUp != null && rayUp.collider != null) {
 			if (rayUp.collider.tag == "LootBox") {
+				rayUp.collider.gameObject.GetComponent<LootBox>().Hit();
 				// Destroy this box
-				Destroy(rayUp.collider.gameObject);
+
 			}
 		}
 		
-		RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down);
+		RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down, RAYCAST_HIT_DISTANCE);
 		if (rayDown != null && rayDown.collider != null) {
 			if (rayDown.collider.tag == "Enemy") {
 				HitEnemy(rayDown.collider.gameObject);
