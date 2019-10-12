@@ -14,22 +14,24 @@ public class EnemyMovement : Character
 	const float HIT_DISTANCE = 0.5f;
 	
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 		if (isDead) {
 			// Don't Move
 		} else {
 			Chase();
+			CheckCollision();
 		}
-
 		
     }
 
 	void Chase() {
 		rb.velocity = new Vector2(xMoveDirection, 0) * EnemySpeed;
-		
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(xMoveDirection, 0));
+	}
 
+	void CheckCollision() {
+
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(xMoveDirection, 0));
 		
 		if (hit.distance < HIT_DISTANCE) {
 			Flip();
