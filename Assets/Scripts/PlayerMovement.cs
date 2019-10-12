@@ -8,15 +8,16 @@ public class PlayerMovement : Character
 	public int JumpForce = 1250;
 	public int BounceForce = 1000;
 
-	private bool flipped = false;
-
 	private GroundChecker GroundChecker;
 
 	const float RAYCAST_HIT_DISTANCE = 0.9f;
+
+	private Animator anim;
 	
 	protected void Start() {
 		base.Start();
 		GroundChecker = GetComponent<GroundChecker>();
+		anim = GetComponent<Animator>();
 	}
 	
 	void FixedUpdate() {
@@ -30,12 +31,19 @@ public class PlayerMovement : Character
 		float deltaX = Input.GetAxisRaw("Horizontal") * Speed;
 		
 		// animations
+		if (deltaX != 0 ) {
+			anim.SetBool("isWalking", true);
+		} else {
+			anim.SetBool("isWalking", false);
+		}
 
+		anim.SetBool("isJumping", !GroundChecker.isGrounded);
+		
 		// player direction
-		if (deltaX < 0.0f && !flipped) {
+		if (deltaX < 0.0f && !sr.flipX) {
 			// Flip to the left
 			Flip();
-		} else if (deltaX > 0.0f && flipped) {
+		} else if (deltaX > 0.0f && sr.flipX) {
 			Flip();
 		}
 		
@@ -52,9 +60,7 @@ public class PlayerMovement : Character
 	}
 
 	void Flip() {
-		flipped = !flipped;
-		sr.flipX = flipped;
-		
+		sr.flipX = !sr.flipX;		
 	}
 
 	void PlayerRaycast() {
