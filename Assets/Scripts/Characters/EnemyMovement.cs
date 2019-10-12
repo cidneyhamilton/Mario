@@ -10,6 +10,8 @@ public class EnemyMovement : Character
 	public int xMoveDirection;
 
 	bool isDead = false;
+
+	const float HIT_DISTANCE = 0.5f;
 	
     // Update is called once per frame
     void Update()
@@ -28,7 +30,7 @@ public class EnemyMovement : Character
 
 		rb.velocity = new Vector2(xMoveDirection, 0) * EnemySpeed;
 		
-		if (hit.distance < 0.5f) {
+		if (hit.distance < HIT_DISTANCE) {
 			Flip();
 			if (hit.collider.tag == "Player") {
 				// Kill Player

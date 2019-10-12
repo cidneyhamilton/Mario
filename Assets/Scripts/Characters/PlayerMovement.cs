@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : Character
 {
-	public int Speed = 10;
+	public int Speed = 6;
 	public int JumpForce = 1250;
 	public int BounceForce = 1000;
 
