@@ -8,6 +8,10 @@ public class LootBox : MonoBehaviour
 	public bool HasCoin;
 	public bool HasPowerUp;
 
+	public Transform spawnPoint;
+	public Coin coinPrefab;
+
+	private bool hit = false;
 	private bool isShaking = false;
 
 	Vector3 startPosition, endPosition;
@@ -17,23 +21,43 @@ public class LootBox : MonoBehaviour
 	
 	void Start() {
 		startPosition = transform.position;
-		
-		endPosition = transform.position;
-		endPosition.y += 0.75f;
 	}
 	
 	void Update() {
 		if (isShaking) {
-			transform.position = new Vector3(transform.position.x, startPosition.y + Mathf.Sin(Time.time *  speed) * 0.1f, transform.position.z);
+			Shake();
 		}
 	}
+
+	void Shake() {
+		float deltaY = Mathf.Sin(Time.time * speed) * 0.1f;
+		transform.position = new Vector3(startPosition.x, startPosition.y + deltaY, startPosition.z);
+	}
+	
 	
 	// Triggered when the player hits her head on this box
     public void Hit() {
-		isShaking = true;
-		startTime = Time.time;
-		StartCoroutine(DestroyOnHit());
+		if (hit) {
+			// Already triggered
+		} else {
+			// Make sure the payload only happens once
+			hit = true;
+
+			// Spawn Coin/Powerup
+			CreateCoin();
+			
+			// Animate
+			isShaking = true;
+			startTime = Time.time;
+			
+			// Destroy
+			StartCoroutine(DestroyOnHit());
+		}
 		
+	}
+
+	void CreateCoin() {
+		Instantiate(coinPrefab, spawnPoint.position, transform.rotation);
 	}
 
 	IEnumerator DestroyOnHit() {
