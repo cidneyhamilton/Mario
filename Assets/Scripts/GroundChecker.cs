@@ -9,7 +9,8 @@ public class GroundChecker : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D col) {
 		Debug.Log("Player has collided with " + col.collider.name);
-		if (col.gameObject.tag == "Ground") {
+		string tag = col.gameObject.tag;
+		if (tag == "Ground" || tag == "Box" || tag == "LootBox") {
 			isGrounded = true;
 		}
 	}

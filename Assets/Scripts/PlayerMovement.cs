@@ -10,7 +10,7 @@ public class PlayerMovement : Character
 
 	private GroundChecker GroundChecker;
 
-	const float RAYCAST_HIT_DISTANCE = 0.9f;
+	const float RAYCAST_HIT_DISTANCE = 0.87f;
 
 	private Animator anim;
 	
@@ -65,8 +65,8 @@ public class PlayerMovement : Character
 
 	void PlayerRaycast() {
 
-		RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up);
-		if (rayUp != null && rayUp.collider != null && rayUp.distance < RAYCAST_HIT_DISTANCE) {
+		RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up, RAYCAST_HIT_DISTANCE);
+		if (rayUp != null && rayUp.collider != null) {
 			if (rayUp.collider.tag == "LootBox") {
 				// Destroy this box
 				Destroy(rayUp.collider.gameObject);
@@ -74,7 +74,7 @@ public class PlayerMovement : Character
 		}
 		
 		RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down);
-		if (rayDown != null && rayDown.collider != null && rayDown.distance < RAYCAST_HIT_DISTANCE) {
+		if (rayDown != null && rayDown.collider != null) {
 			if (rayDown.collider.tag == "Enemy") {
 				HitEnemy(rayDown.collider.gameObject);
 			} 
