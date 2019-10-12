@@ -34,6 +34,15 @@ public class Score : MonoBehaviour
 	void CountScore() {
 		IncreaseScore((int) timeLeft);
 
+		// Save score
+		if (SaveManager.Instance != null) {
+			Debug.Log("Saving player score");
+			SaveManager.Instance.highScore = playerScore;
+			SaveManager.Instance.SaveData();
+		} else {
+			Debug.LogWarning("No SaveManager found.");
+		}
+		
 		// SceneController.SwitchScene("SampleScene");
 	}
 
