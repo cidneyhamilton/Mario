@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-
 	
 	public void Die() {
-		SceneController.SwitchScene("SampleScene");
+		SceneController.Instance.SwitchScene("SampleScene");
 	}
 	
 	void Update() {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2785906347683546513}
   - component: {fileID: 2785906347683546512}
   - component: {fileID: 6505221812705709613}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Loot Box
   m_TagString: LootBox
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2785906347683546514}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 52fe6ceb1fa938246abaf1adb5e31b54, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

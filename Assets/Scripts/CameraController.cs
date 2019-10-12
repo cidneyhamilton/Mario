@@ -11,15 +11,14 @@ public class CameraController : MonoBehaviour
 	public float yMin;
 	public float yMax;
 
-	void Start() {
-		player = GameObject.FindWithTag("Player");
-	}
-
 	void LateUpdate() {
+
 		TrackPlayer();
 	}
 
 	void TrackPlayer() {
+		player = GameObject.FindWithTag("Player");
+		
 		float x = Mathf.Clamp(player.transform.position.x, xMin, xMax);
 		float y = Mathf.Clamp(player.transform.position.y, yMin, yMax);
 

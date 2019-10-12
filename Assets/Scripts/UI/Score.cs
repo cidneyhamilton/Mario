@@ -21,31 +21,10 @@ public class Score : MonoBehaviour
 		
 		if (timeLeft <= 0.0f) {
 			// Kill the player if they run out of time
-			SceneController.SwitchScene("SampleScene");
+			SceneController.Instance.GameOver();
 		}
     }
-
-	void OnTriggerEnter2D (Collider2D trigger) {
-		if (trigger.gameObject.tag == "Player") {
-			CountScore();
-		}
-	}
-
-	void CountScore() {
-		IncreaseScore((int) timeLeft);
-
-		// Save score
-		if (SaveManager.Instance != null) {
-			Debug.Log("Saving player score");
-			SaveManager.Instance.highScore = playerScore;
-			SaveManager.Instance.SaveData();
-		} else {
-			Debug.LogWarning("No SaveManager found.");
-		}
-		
-		// SceneController.SwitchScene("SampleScene");
-	}
-
+	
 	void UpdateUI() {
 		// Update UI
 		timeLeftLabel.text = "Time Left: " + (int) timeLeft;

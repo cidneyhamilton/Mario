@@ -55,7 +55,6 @@ public class PlayerMovement : Character
 	void Jump() {
 		if (Input.GetButtonDown("Jump") && GroundChecker.isGrounded) {
 			rb.AddForce(Vector2.up * JumpForce);
-			GroundChecker.isGrounded = false;
 		}
 	}
 
