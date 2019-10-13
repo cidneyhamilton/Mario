@@ -32,7 +32,7 @@ public class PowerUp : Character
 	void CheckCollision() {
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(direction, 0));
 
-		if (hit.distance < HIT_DISTANCE) {
+		if (hit != null & hit.collider != null && hit.distance < HIT_DISTANCE) {
 			if (hit.collider.tag == "Player") {
 				// Player consumes powerup
 				HitPlayer();

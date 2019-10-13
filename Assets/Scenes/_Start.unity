@@ -280,9 +280,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xMin: -17
-  xMax: 20
+  xMax: 80
   yMin: 3
-  yMax: 3
+  yMax: 6
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

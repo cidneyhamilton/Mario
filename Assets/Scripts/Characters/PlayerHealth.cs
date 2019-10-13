@@ -13,14 +13,28 @@ public class PlayerHealth : MonoBehaviour
 
 		if (hitPoints < 0) {
 			// Death scene
-			SceneController.Instance.SwitchScene("SampleScene");
+			SceneController.Instance.GameOver();
 		}
 	}
 
 	public void PowerUp() {
 		if (hitPoints < maxHitPoints) {
 			hitPoints++;
+
+			IncreaseSize();
 		}
+	}
+
+	void IncreaseSize() {
+		// TODO: Animations
+		// TODO: SFX
+		transform.localScale += new Vector3(0.5f, 0.5f, 0);
+	}
+
+	void DecreaseSize() {
+		// TODO: Animations
+		// TODO: SFX
+		transform.localScale -= new Vector3(0.5f, 0.5f, 0);
 	}
 	
 	void Update() {

@@ -33,7 +33,7 @@ public class EnemyMovement : Character
 
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(xMoveDirection, 0));
 		
-		if (hit.distance < HIT_DISTANCE) {
+		if (hit != null && hit.collider != null && hit.distance < HIT_DISTANCE) {
 			Flip();
 			if (hit.collider.tag == "Player") {
 				// Kill Player

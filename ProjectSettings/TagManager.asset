@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - LootBox
   - Box
+  - PowerUp
   layers:
   - Default
   - TransparentFX

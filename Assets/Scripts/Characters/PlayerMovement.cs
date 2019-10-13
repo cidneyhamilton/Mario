@@ -69,15 +69,26 @@ public class PlayerMovement : Character
 			if (rayUp.collider.tag == "LootBox") {
 				rayUp.collider.gameObject.GetComponent<LootBox>().Hit();
 				// Destroy this box
+			} else if (rayUp.collider.tag == "PowerUp") {
+				Debug.Log("Eating powerup.");
+			   
+				GetComponent<PlayerHealth>().PowerUp();
 
-			}
+				Destroy(rayUp.collider.gameObject);
+			} 
 		}
 		
 		RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down, RAYCAST_HIT_DISTANCE);
 		if (rayDown != null && rayDown.collider != null) {
 			if (rayDown.collider.tag == "Enemy") {
 				HitEnemy(rayDown.collider.gameObject);
-			} 
+			} else if (rayDown.collider.tag == "PowerUp") {
+				Debug.Log("Eating powerup.");
+			   
+				GetComponent<PlayerHealth>().PowerUp();
+
+				Destroy(rayDown.collider.gameObject);
+			}
 		}
 	}
 
