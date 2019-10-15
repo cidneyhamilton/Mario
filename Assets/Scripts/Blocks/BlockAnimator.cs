@@ -21,7 +21,7 @@ public class BlockAnimator : MonoBehaviour
 	
 	void Update() {
 		if (isShaking) {
-			Shake();
+			Animate();
 		}
 	}		
 	
@@ -32,7 +32,10 @@ public class BlockAnimator : MonoBehaviour
 		} else {
 			// Make sure the payload only happens once
 			hit = true;
-		
+
+			// Play Sound Effects
+			AudioEvents.PlaySound("smb_breakblock");
+			
 			// Animate
 			isShaking = true;
 			startTime = Time.time;
@@ -44,7 +47,7 @@ public class BlockAnimator : MonoBehaviour
 		
 	}
 
-	protected void Shake() {
+	protected void Animate() {
 		float deltaY = Mathf.Sin(Time.time * speed) * 0.1f;
 		transform.position = new Vector3(startPosition.x, startPosition.y + deltaY, startPosition.z);
 	}	

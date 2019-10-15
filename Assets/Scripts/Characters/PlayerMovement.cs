@@ -54,6 +54,9 @@ public class PlayerMovement : Character
 
 	void Jump() {
 		if (Input.GetButtonDown("Jump") && GroundChecker.isGrounded) {
+			// Play Sound When Jumping
+			AudioEvents.PlaySound("smb_jumpsmall");
+			
 			rb.AddForce(Vector2.up * JumpForce);
 		}
 	}

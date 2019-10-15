@@ -7,10 +7,22 @@ public class EndFlag : MonoBehaviour
 {
 	void OnTriggerEnter2D (Collider2D trigger) {
 		if (trigger.gameObject.tag == "Player") {
-			
-			// TODO: Advance to Next Level
-			SceneController.Instance.GameOver();
+
+			StartCoroutine(UseFlagpole());
 		}
+	}
+
+	IEnumerator UseFlagpole() {
+		// Play Sound Effects
+		AudioEvents.PlaySound("smb_flagpole");
+
+		// TODO Play Animation
+
+		yield return new WaitForSeconds(1.0f);
+			
+		// TODO: Advance to Next Level
+		SceneController.Instance.GameOver();
+		
 	}
 
 }

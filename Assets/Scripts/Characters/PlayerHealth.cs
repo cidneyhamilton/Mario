@@ -12,15 +12,37 @@ public class PlayerHealth : MonoBehaviour
 		hitPoints--;
 
 		if (hitPoints < 0) {
-			// Death scene
-			SceneController.Instance.GameOver();
+			// TODO: Death Animation
+			StartCoroutine(PlayerDeath());
 		}
 	}
 
+	IEnumerator PlayerDeath() {
+
+		AudioEvents.PlayMusic("smb_mariodie");
+
+		// TODO: Animate
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+
+		GetComponent<Animator>().SetTrigger("Death");
+		yield return new WaitForSeconds(2.0f);
+		
+		// Death scene
+		SceneController.Instance.GameOver();
+
+		AudioEvents.PlayMusic("Super-Mario-Bros");
+		GetComponent<Animator>().ResetTrigger("Death");
+		
+	}
+	
 	public void PowerUp() {
 		if (hitPoints < maxHitPoints) {
 			hitPoints++;
 
+			// Play Sound
+			AudioEvents.PlaySound("smb_powerup");
+			
+			// Animate
 			IncreaseSize();
 		}
 	}

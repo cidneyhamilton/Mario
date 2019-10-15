@@ -43,6 +43,9 @@ public class Coin : MonoBehaviour
 	}
 
 	void CollectCoin() {
+
+		AudioEvents.PlaySound("smb_coin");
+		
 		// Increase player score
 		// TODO: use event system
 		GameObject.FindObjectOfType<Score>().IncreaseScore(Points);

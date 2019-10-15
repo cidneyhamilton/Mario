@@ -31,6 +31,9 @@ public class LootBox : BlockAnimator
 	}
 
 	void CreateMushroom() {
+		// Sound Effect
+		AudioEvents.PlaySound("smb_powerup_appears");
+
 		Instantiate(mushroomPrefab, spawnPoint.position, transform.rotation);
 	}
 
