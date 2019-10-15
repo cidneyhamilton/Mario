@@ -97,7 +97,14 @@ public class PlayerMovement : Character
 
 	// Handles player jumping on the enemy
 	void HitEnemy(GameObject enemy) {
+
+		// SFX
+		AudioEvents.PlaySound("smb_kick");
+
+		// Rebound Player
 		rb.AddForce(transform.up * BounceForce);
+
+		// Enemy death event
 		enemy.GetComponent<EnemyMovement>().Die();	
 	}
 	

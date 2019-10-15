@@ -7,10 +7,14 @@ public class BackgroundMusicController : SoundController
 
 	void OnEnable() {
 		AudioEvents.OnPlayMusic += PlayMusic;
+		AudioEvents.OnPause += Pause;
+		AudioEvents.OnUnPause += UnPause;
 	}
 
 	void OnDisable() {
 		AudioEvents.OnPlayMusic -= PlayMusic;
+		AudioEvents.OnPause -= Pause;
+		AudioEvents.OnUnPause -= UnPause;
 	}
 
 	public void PlayMusic(string clipName) {
@@ -19,6 +23,14 @@ public class BackgroundMusicController : SoundController
 		} else {
 			PlayClip(GetClipByName(clipName));
 		}
+	}
+
+	public void Pause() {
+		audioSource.Pause();
+	}
+
+	public void UnPause() {
+		audioSource.UnPause();
 	}
 }
 

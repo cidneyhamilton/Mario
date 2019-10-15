@@ -12,6 +12,9 @@ public class AudioEvents
 	public static event PlaySoundHandler OnPlaySound;
 	public static event PlaySoundHandler OnPlayMusic;
 
+	public static event Action OnPause;
+	public static event Action OnUnPause;
+	
 	// Handles playing a sound
 	public static void PlaySound(string clipName) {
 		if (OnPlaySound != null) {
@@ -23,6 +26,14 @@ public class AudioEvents
 		if (OnPlayMusic != null) {
 			OnPlayMusic(clipName);
 		}
+	}
+
+	public static void Pause() {
+		OnPause();
+	}
+
+	public static void UnPause() {
+		OnUnPause();
 	}
 
 
