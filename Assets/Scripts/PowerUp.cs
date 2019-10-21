@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUp : Character
 {
 
-	public int Force = 4;
+	public float Speed = 2.8f;
 	public int direction = 1;
 
 	const float HIT_DISTANCE = 0.87f;
@@ -21,8 +21,12 @@ public class PowerUp : Character
 	
 	void FixedUpdate() {
 		if (GroundChecker.isGrounded) {
-			rb.AddForce(new Vector2(direction, 0) * Force);
+			Debug.Log("Adding force to powerup.");
+			Vector2 newVelocity = rb.velocity;
+			newVelocity.x = transform.right.x * Speed * direction;
+			rb.velocity = newVelocity;
 		} else {
+			Debug.Log("We haven't landed.");
 			landed = false;
 		}
 		CheckCollision();
@@ -30,18 +34,22 @@ public class PowerUp : Character
 	}
 
 	void CheckCollision() {
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(direction, 0));
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(direction, 0), HIT_DISTANCE);
 
-		if (hit != null & hit.collider != null && hit.distance < HIT_DISTANCE) {
+		if (hit != null & hit.collider != null) {
 			if (hit.collider.tag == "Player") {
 				// Player consumes powerup
 				HitPlayer();
+			} else {
+				Debug.Log("Collided with something.");
+				ChangeDirection();
 			}
 		}
 
 		RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down, HIT_DISTANCE);
 		
 		if (rayDown != null && rayDown.collider != null && !landed) {
+			Debug.Log("Hitting the ground; changing direction.");
 			ChangeDirection();
 			landed = true;
 		}
