@@ -359,11 +359,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1576914821}
     m_Modifications:
-    - target: {fileID: 5695297997792105659, guid: 538f45d327c0be7e8bfbac57932b7896,
-        type: 3}
-      propertyPath: m_Name
-      value: '@BackgroundMusicController'
-      objectReference: {fileID: 0}
     - target: {fileID: 8002755394408784939, guid: 538f45d327c0be7e8bfbac57932b7896,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -418,6 +413,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695297997792105659, guid: 538f45d327c0be7e8bfbac57932b7896,
+        type: 3}
+      propertyPath: m_Name
+      value: '@BackgroundMusicController'
       objectReference: {fileID: 0}
     - target: {fileID: 9007669712561301879, guid: 538f45d327c0be7e8bfbac57932b7896,
         type: 3}
@@ -586,11 +586,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1576914821}
     m_Modifications:
-    - target: {fileID: 3255234445638720395, guid: 1665e40e19b389708aa731f8c5bb1ff8,
-        type: 3}
-      propertyPath: m_Name
-      value: '@SoundEffectController'
-      objectReference: {fileID: 0}
     - target: {fileID: 2548801099282424267, guid: 1665e40e19b389708aa731f8c5bb1ff8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -646,10 +641,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3255234445638720395, guid: 1665e40e19b389708aa731f8c5bb1ff8,
+        type: 3}
+      propertyPath: m_Name
+      value: '@SoundEffectController'
+      objectReference: {fileID: 0}
     - target: {fileID: 2262255105037900758, guid: 1665e40e19b389708aa731f8c5bb1ff8,
         type: 3}
       propertyPath: clips.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2262255105037900758, guid: 1665e40e19b389708aa731f8c5bb1ff8,
         type: 3}
@@ -705,7 +705,7 @@ PrefabInstance:
         type: 3}
       propertyPath: clips.Array.data[10]
       value: 
-      objectReference: {fileID: 8300000, guid: a341c8cd4a3eb2eec910d4d0b2efcd03, type: 3}
+      objectReference: {fileID: 8300000, guid: eb7eeaff2744f8d9f9a4e3a6447e5999, type: 3}
     - target: {fileID: 2262255105037900758, guid: 1665e40e19b389708aa731f8c5bb1ff8,
         type: 3}
       propertyPath: clips.Array.data[11]

@@ -8,15 +8,36 @@ using Cyborg.Platformer;
 public class PlayerHealth : Character
 {
 
+	bool invincible = false;
+	
 	int hitPoints = 1;
 	const int maxHitPoints = 2;
 	
 	public void Die() {
-		hitPoints--;
-
-		if (hitPoints < 0) {
+		if (invincible) {
+			// Do nothing; player is invincible
+		} else if (hitPoints == maxHitPoints) {
+			StartCoroutine(TakeDamage());
+		} else {
 			StartCoroutine(PlayerDeath());
 		}
+	}
+
+	IEnumerator TakeDamage() {
+
+		hitPoints--;
+
+		AudioController.PlayPowerDown();
+
+		// TODO: Animate
+		
+		DecreaseSize();	   
+		
+		invincible = true;
+
+		yield return new WaitForSeconds(1.0f);
+
+		invincible = false;
 	}
 
 	void PlayDeadAnimation() {
@@ -55,6 +76,8 @@ public class PlayerHealth : Character
 		if (hitPoints < maxHitPoints) {
 			hitPoints++;
 
+			rb.velocity = Vector2.zero;
+			
 			// Play Sound
 			AudioController.PlayCollectPowerUp();
 			

@@ -18,6 +18,10 @@ public class AudioController : MonoBehaviour
 
 	// Play Sound Clip
 
+	public static void PlayPowerDown() {
+		AudioEvents.PlaySound("smb_pipe");
+	}
+	
 	public static void PlayBreakBlock() {
 		AudioEvents.PlaySound("smb_breakblock");
 	}
