@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Cyborg.Audio;
+using Cyborg.Platformer;
 
 public class PlayerHealth : Character
 {
@@ -18,14 +19,27 @@ public class PlayerHealth : Character
 		}
 	}
 
+	void PlayDeadAnimation() {
+		rb.gravityScale = 1.0f;
+		rb.AddForce(Vector2.up * 250.0f);
+	}
+	
 	IEnumerator PlayerDeath() {
-
+				
+		// Play losing sting
 		AudioController.PlayLose();
 
-		rb.constraints = RigidbodyConstraints2D.FreezeAll;
+		GetComponent<PlayerMovement>().enabled = false;
 
+		rb.velocity = Vector2.zero;
+		
+		gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+		collider.isTrigger = true;
+		
 		animator.SetTrigger("Death");
 
+		PlayDeadAnimation();
+		
 		yield return new WaitForSeconds(2.0f);
 		
 		// Death scene

@@ -51,14 +51,16 @@ public class EnemyMovement : Character
 
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(xMoveDirection, 0), HIT_DISTANCE);
 		
-		if (IsValid(hit)) {
-			Flip();
-		}
-
 		if (IsPlayer(hit)) {
 			// Kill Player
 			hit.collider.GetComponent<PlayerHealth>().Die();
-		}									 
+		}
+
+		if (IsValid(hit) && hit.collider.tag != "Player") {
+			// Change directions when hitting an obstacle
+			Flip();
+		}
+
 	}
 
 	void Flip() {
