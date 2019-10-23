@@ -1,3 +1,6 @@
 [submodule "Assets/Scripts/_Shared/Audio"]
 	path = Assets/Scripts/_Shared/Audio
 	url = git@github.com:cidneyhamilton/cyborg-audio.git
+[submodule "Assets/Scripts/_Shared/Platformer"]
+	path = Assets/Scripts/_Shared/Platformer
+	url = git@github.com:cidneyhamilton/cyborg-platformer.git
