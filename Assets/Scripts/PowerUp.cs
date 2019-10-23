@@ -22,6 +22,8 @@ public class PowerUp : Character
 	}
 	
 	void FixedUpdate() {
+		CheckCollision();
+
 		if (GroundChecker.IsGrounded) {
 
 			Debug.Log("Adding force to powerup.");
@@ -32,7 +34,6 @@ public class PowerUp : Character
 			Debug.Log("We haven't landed.");
 			landed = false;
 		}
-		CheckCollision();
 		
 	}
 
@@ -49,12 +50,10 @@ public class PowerUp : Character
 			}
 		}
 
-		RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down, HIT_DISTANCE);
-		
-		if (rayDown != null && rayDown.collider != null && !landed) {
+		if (!landed && GroundChecker.IsGrounded) {
 			Debug.Log("Hitting the ground; changing direction.");
-			ChangeDirection();
 			landed = true;
+			ChangeDirection();
 		}
 
 	}
