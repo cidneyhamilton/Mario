@@ -4,7 +4,7 @@ using UnityEngine;
 
 using Cyborg.Audio;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Character
 {
 
 	int hitPoints = 1;
@@ -14,7 +14,6 @@ public class PlayerHealth : MonoBehaviour
 		hitPoints--;
 
 		if (hitPoints < 0) {
-			// TODO: Death Animation
 			StartCoroutine(PlayerDeath());
 		}
 	}
@@ -23,17 +22,16 @@ public class PlayerHealth : MonoBehaviour
 
 		AudioEvents.PlayMusic("smb_mariodie");
 
-		// TODO: Animate
-		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+		rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-		GetComponent<Animator>().SetTrigger("Death");
+		animator.SetTrigger("Death");
 		yield return new WaitForSeconds(2.0f);
 		
 		// Death scene
 		SceneController.Instance.GameOver();
 
 		AudioEvents.PlayMusic("Super-Mario-Bros");
-		GetComponent<Animator>().ResetTrigger("Death");
+		animator.ResetTrigger("Death");
 		
 	}
 	
