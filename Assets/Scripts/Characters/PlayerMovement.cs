@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using Cyborg.Audio;
+using Cyborg.Platformer;
 
 public class PlayerMovement : Character
 {
@@ -13,13 +13,10 @@ public class PlayerMovement : Character
 	private GroundChecker GroundChecker;
 
 	const float RAYCAST_HIT_DISTANCE = 0.87f;
-
-	private Animator anim;
 	
-	protected void Start() {
+	protected override void Start() {
 		base.Start();
 		GroundChecker = GetComponent<GroundChecker>();
-		anim = GetComponent<Animator>();
 	}
 	
 	void FixedUpdate() {
@@ -34,12 +31,12 @@ public class PlayerMovement : Character
 		
 		// animations
 		if (deltaX != 0 ) {
-			anim.SetBool("isWalking", true);
+			animator.SetBool("isWalking", true);
 		} else {
-			anim.SetBool("isWalking", false);
+			animator.SetBool("isWalking", false);
 		}
 
-		anim.SetBool("isJumping", !GroundChecker.isGrounded);
+		animator.SetBool("isJumping", !GroundChecker.isGrounded);
 		
 		// player direction
 		if (deltaX < 0.0f && !sr.flipX) {
@@ -57,7 +54,7 @@ public class PlayerMovement : Character
 	void Jump() {
 		if (Input.GetButtonDown("Jump") && GroundChecker.isGrounded) {
 			// Play Sound When Jumping
-			AudioEvents.PlaySound("smb_jumpsmall");
+			AudioController.PlayJump();
 			
 			rb.AddForce(Vector2.up * JumpForce);
 		}
@@ -101,7 +98,7 @@ public class PlayerMovement : Character
 	void HitEnemy(GameObject enemy) {
 
 		// SFX
-		AudioEvents.PlaySound("smb_kick");
+		AudioController.PlayHitEnemy();
 
 		// Rebound Player
 		rb.AddForce(transform.up * BounceForce);

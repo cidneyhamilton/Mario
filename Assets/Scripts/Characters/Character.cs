@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
 	protected SpriteRenderer sr;
 	protected Animator animator;
 	
-	protected void Start() {
+	protected virtual void Start() {
 		rb = gameObject.GetComponent<Rigidbody2D>();
 		sr = gameObject.GetComponent<SpriteRenderer>();
 		animator = gameObject.GetComponent<Animator>();

@@ -20,17 +20,19 @@ public class PlayerHealth : Character
 
 	IEnumerator PlayerDeath() {
 
-		AudioEvents.PlayMusic("smb_mariodie");
+		AudioController.PlayLose();
 
 		rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
 		animator.SetTrigger("Death");
+
 		yield return new WaitForSeconds(2.0f);
 		
 		// Death scene
 		SceneController.Instance.GameOver();
 
-		AudioEvents.PlayMusic("Super-Mario-Bros");
+		AudioController.PlayLoop();
+		
 		animator.ResetTrigger("Death");
 		
 	}
@@ -40,7 +42,7 @@ public class PlayerHealth : Character
 			hitPoints++;
 
 			// Play Sound
-			AudioEvents.PlaySound("smb_powerup");
+			AudioController.PlayCollectPowerUp();
 			
 			// Animate
 			IncreaseSize();

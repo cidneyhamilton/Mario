@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cyborg.Audio;
 
 public class Coin : MonoBehaviour
 {
@@ -45,7 +44,7 @@ public class Coin : MonoBehaviour
 
 	void CollectCoin() {
 
-		AudioEvents.PlaySound("smb_coin");
+		AudioController.PlayCollectCoin();
 		
 		// Increase player score
 		// TODO: use event system

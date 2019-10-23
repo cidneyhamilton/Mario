@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using Cyborg.Audio;
-
 public class LootBox : BlockAnimator
 {
 
@@ -34,7 +32,7 @@ public class LootBox : BlockAnimator
 
 	void CreateMushroom() {
 		// Sound Effect
-		AudioEvents.PlaySound("smb_powerup_appears");
+		AudioController.PlaySpawnPowerUp();
 
 		Instantiate(mushroomPrefab, spawnPoint.position, transform.rotation);
 	}

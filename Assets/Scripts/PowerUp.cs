@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Cyborg.Platformer;
+
 public class PowerUp : Character
 {
 
@@ -14,13 +16,14 @@ public class PowerUp : Character
 
 	bool landed;
 
-	protected void Start() {
+	protected override void Start() {
 		base.Start();
 		GroundChecker = GetComponent<GroundChecker>();
 	}
 	
 	void FixedUpdate() {
 		if (GroundChecker.isGrounded) {
+
 			Debug.Log("Adding force to powerup.");
 			Vector2 newVelocity = rb.velocity;
 			newVelocity.x = transform.right.x * Speed * direction;

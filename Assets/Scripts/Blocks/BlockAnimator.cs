@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using Cyborg.Audio;
-
 public class BlockAnimator : MonoBehaviour
 {
 	protected bool hit = false;
@@ -36,7 +34,7 @@ public class BlockAnimator : MonoBehaviour
 			hit = true;
 
 			// Play Sound Effects
-			AudioEvents.PlaySound("smb_breakblock");
+			AudioController.PlayBreakBlock();
 			
 			// Animate
 			isShaking = true;
