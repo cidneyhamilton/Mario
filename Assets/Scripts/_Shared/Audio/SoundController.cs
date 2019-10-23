@@ -23,11 +23,9 @@ namespace Cyborg.Audio {
 			
 			if (clip == null) {
 				// No audio clip to play!
-			} else {
-				
+			} else {			   
 				// Queue the provided clip in the attached audio source and play it
 				audioSource.clip = clip;
-
 				Play();  
 			}
 		}
