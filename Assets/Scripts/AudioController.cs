@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Cyborg.Audio;
+using Cyborg.Platformer;
 
 public class AudioController : MonoBehaviour
 {
 
 	void OnEnable() {
-		
+		PlatformerEvents.OnJump += PlayJump;
 	}
 
 	void OnDisable() {
-
+		PlatformerEvents.OnJump -= PlayJump;
 	}
 
 	// Play Sound Clip
