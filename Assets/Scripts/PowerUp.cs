@@ -22,7 +22,7 @@ public class PowerUp : Character
 	}
 	
 	void FixedUpdate() {
-		if (GroundChecker.isGrounded) {
+		if (GroundChecker.IsGrounded) {
 
 			Debug.Log("Adding force to powerup.");
 			Vector2 newVelocity = rb.velocity;

@@ -8,11 +8,8 @@ public class PlayerMovement : Character
 {
 	public int Speed = 6;
 	public int JumpForce = 1250;
-	public int BounceForce = 1000;
 
 	private GroundChecker GroundChecker;
-
-	const float RAYCAST_HIT_DISTANCE = 0.87f;
 	
 	protected override void Start() {
 		base.Start();
@@ -22,7 +19,6 @@ public class PlayerMovement : Character
 	void FixedUpdate() {
 		Move();
 		Jump();
-		PlayerRaycast();
 	}
 
 	void Move() {
@@ -31,12 +27,12 @@ public class PlayerMovement : Character
 		
 		// animations
 		if (deltaX != 0 ) {
-			animator.SetBool("isWalking", true);
+			animator.SetBool("isWalking", GroundChecker.IsGrounded);
 		} else {
 			animator.SetBool("isWalking", false);
 		}
 
-		animator.SetBool("isJumping", !GroundChecker.isGrounded);
+		animator.SetBool("isJumping", !GroundChecker.IsGrounded);
 		
 		// player direction
 		if (deltaX < 0.0f && !sr.flipX) {
@@ -52,7 +48,7 @@ public class PlayerMovement : Character
 	}
 
 	void Jump() {
-		if (Input.GetButtonDown("Jump") && GroundChecker.isGrounded) {
+		if (Input.GetButtonDown("Jump") && GroundChecker.IsGrounded) {
 			// Play Sound When Jumping
 			AudioController.PlayJump();
 			
@@ -64,47 +60,7 @@ public class PlayerMovement : Character
 		sr.flipX = !sr.flipX;		
 	}
 
-	void PlayerRaycast() {
 
-		RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up, RAYCAST_HIT_DISTANCE);
-		if (rayUp != null && rayUp.collider != null) {
-			if (rayUp.collider.tag == "LootBox") {
-				rayUp.collider.gameObject.GetComponent<LootBox>().Hit();
-				// Destroy this box
-			} else if (rayUp.collider.tag == "PowerUp") {
-				Debug.Log("Eating powerup.");
-			   
-				GetComponent<PlayerHealth>().PowerUp();
 
-				Destroy(rayUp.collider.gameObject);
-			} 
-		}
-		
-		RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down, RAYCAST_HIT_DISTANCE);
-		if (rayDown != null && rayDown.collider != null) {
-			if (rayDown.collider.tag == "Enemy") {
-				HitEnemy(rayDown.collider.gameObject);
-			} else if (rayDown.collider.tag == "PowerUp") {
-				Debug.Log("Eating powerup.");
-			   
-				GetComponent<PlayerHealth>().PowerUp();
-
-				Destroy(rayDown.collider.gameObject);
-			}
-		}
-	}
-
-	// Handles player jumping on the enemy
-	void HitEnemy(GameObject enemy) {
-
-		// SFX
-		AudioController.PlayHitEnemy();
-
-		// Rebound Player
-		rb.AddForce(transform.up * BounceForce);
-
-		// Enemy death event
-		enemy.GetComponent<EnemyMovement>().Die();	
-	}
 	
 }

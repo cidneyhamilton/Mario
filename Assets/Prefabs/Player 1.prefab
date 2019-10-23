@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 99659022337562446}
   - component: {fileID: 1516600744}
   - component: {fileID: 1516600738}
+  - component: {fileID: -3254096388213616439}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -154,7 +155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 6
   JumpForce: 1250
-  BounceForce: 1000
 --- !u!114 &99659022337562441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,3 +218,16 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0023031235, y: 0}
   m_Size: {x: 0.43517494, y: 0.93}
   m_Direction: 0
+--- !u!114 &-3254096388213616439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99659022337562439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd894d1fedd120a84a0714122d3ce7d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BounceForce: 1000

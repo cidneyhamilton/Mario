@@ -16,7 +16,7 @@ namespace Cyborg.Platformer {
 		// Radius to check against
 		const float GROUND_CHECK_RADIUS = 0.07f;
 		
-		public bool isGrounded {
+		public bool IsGrounded {
 			get {			
 				if (IsGroundedChecker == null) {
 					Debug.LogError("Platformer needs a transform to check on whether it's grounded.");
