@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Cyborg.Audio;
+
 public class BlockAnimator : MonoBehaviour
 {
 	protected bool hit = false;

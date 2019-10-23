@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Cyborg.Audio;
+
 public class GameController : Singleton<GameController>
 {
-	
+
 	public void Pause() {
 		AudioEvents.PlaySound("smb_pause");
 		AudioEvents.Pause();

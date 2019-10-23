@@ -2,36 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundMusicController : SoundController
-{
+namespace Cyborg.Audio {
 
-	void OnEnable() {
-		AudioEvents.OnPlayMusic += PlayMusic;
-		AudioEvents.OnPause += Pause;
-		AudioEvents.OnUnPause += UnPause;
-	}
+	// Handles background music for the game
+	public class BackgroundMusicController : SoundController
+	{
+		
+		void OnEnable() {
+			AudioEvents.OnPlayMusic += PlayMusic;
 
-	void OnDisable() {
-		AudioEvents.OnPlayMusic -= PlayMusic;
-		AudioEvents.OnPause -= Pause;
-		AudioEvents.OnUnPause -= UnPause;
-	}
+			AudioEvents.OnPause += Pause;
+			AudioEvents.OnUnPause += UnPause;
+		}
+		
+		void OnDisable() {
+			AudioEvents.OnPlayMusic -= PlayMusic;
 
-	public void PlayMusic(string clipName) {
-		if (IsPlaying(clipName)) {
-			// Do Nothing; already playing this clip
-		} else {
-			PlayClip(GetClipByName(clipName));
+			AudioEvents.OnPause -= Pause;
+			AudioEvents.OnUnPause -= UnPause;
+		}
+
+		public void PlayMusic(string clipName) {
+			if (IsPlaying(clipName)) {
+				// Do Nothing; already playing this clip
+			} else {
+				PlayClip(GetClipByName(clipName));
+			}
+		}
+		
+		public void Pause() {
+			audioSource.Pause();
+		}
+		
+		public void UnPause() {
+			audioSource.UnPause();
 		}
 	}
 
-	public void Pause() {
-		audioSource.Pause();
-	}
-
-	public void UnPause() {
-		audioSource.UnPause();
-	}
 }
 
 

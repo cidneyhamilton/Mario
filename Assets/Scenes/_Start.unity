@@ -231,13 +231,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc0c7427ba22c223dbddc6975483aaa7, type: 3}
+  m_Script: {fileID: 11500000, guid: 21f030132b1126206bb8841a4179e50b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMin: -17
-  xMax: 200
-  yMin: 3
-  yMax: 6
+  xMin: -18
+  xMax: 100
+  yMin: 2.5
+  yMax: 5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
