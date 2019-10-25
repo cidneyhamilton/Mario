@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Cyborg.Scenes;
+
 public class Score : MonoBehaviour
 {
 
@@ -21,7 +23,7 @@ public class Score : MonoBehaviour
 		
 		if (timeLeft <= 0.0f) {
 			// Kill the player if they run out of time
-			SceneController.Instance.GameOver();
+			SceneEvents.ChangeScene("Main");
 		}
     }
 	

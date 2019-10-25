@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Cyborg.Scenes;
+
 // Flag indicating the end of the level
 [RequireComponent(typeof(AudioSource))]
 public class EndFlag : MonoBehaviour
@@ -30,7 +32,7 @@ public class EndFlag : MonoBehaviour
 		yield return new WaitForSeconds(1.0f);
 			
 		// TODO: Advance to Next Level
-		SceneController.Instance.GameOver();
+		SceneEvents.ChangeScene("Main");
 		
 	}
 

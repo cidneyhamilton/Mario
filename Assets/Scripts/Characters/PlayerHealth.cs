@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Cyborg.Audio;
 using Cyborg.Platformer;
+using Cyborg.Scenes;
 
 public class PlayerHealth : Character
 {
@@ -64,7 +65,7 @@ public class PlayerHealth : Character
 		yield return new WaitForSeconds(2.0f);
 		
 		// Death scene
-		SceneController.Instance.GameOver();
+		SceneEvents.ChangeScene("Main");
 
 		AudioController.PlayLoop();
 		

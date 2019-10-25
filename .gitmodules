@@ -4,3 +4,6 @@
 [submodule "Assets/Scripts/_Shared/Platformer"]
 	path = Assets/Scripts/_Shared/Platformer
 	url = git@github.com:cidneyhamilton/cyborg-platformer.git
+[submodule "Assets/Scripts/_Shared/cyborg-scenes"]
+	path = Assets/Scripts/_Shared/cyborg-scenes
+	url = git@github.com:cidneyhamilton/cyborg-scenes.git
