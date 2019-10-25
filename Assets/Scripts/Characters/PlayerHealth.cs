@@ -65,7 +65,7 @@ public class PlayerHealth : Character
 		yield return new WaitForSeconds(2.0f);
 		
 		// Death scene
-		SceneEvents.ChangeScene("Main");
+		GameController.Instance.Restart();
 
 		AudioController.PlayLoop();
 		

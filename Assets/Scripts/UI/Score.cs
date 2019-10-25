@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
 		
 		if (timeLeft <= 0.0f) {
 			// Kill the player if they run out of time
-			SceneEvents.ChangeScene("Main");
+			GameController.Instance.Restart();
 		}
     }
 	

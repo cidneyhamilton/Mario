@@ -7,3 +7,6 @@
 [submodule "Assets/Scripts/_Shared/cyborg-scenes"]
 	path = Assets/Scripts/_Shared/cyborg-scenes
 	url = git@github.com:cidneyhamilton/cyborg-scenes.git
+[submodule "Assets/Scripts/_Shared/Scenes"]
+	path = Assets/Scripts/_Shared/Scenes
+	url = git@github.com:cidneyhamilton/cyborg-scenes.git

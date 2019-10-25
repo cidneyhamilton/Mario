@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1e8fe30e0139a1799674dbf722b675, type: 3}
   m_Name: SceneConfig
   m_EditorClassIdentifier: 
-  Title: SampleScene
-  GameOver: _GameOver
+  Title: Title
+  GameOver: GameOver
   UserInterface:
   - HUD

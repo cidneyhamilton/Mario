@@ -31,8 +31,7 @@ public class EndFlag : MonoBehaviour
 		// Wait for duration of animation
 		yield return new WaitForSeconds(1.0f);
 			
-		// TODO: Advance to Next Level
-		SceneEvents.ChangeScene("Main");
+		GameController.Instance.NextLevel();
 		
 	}
 
