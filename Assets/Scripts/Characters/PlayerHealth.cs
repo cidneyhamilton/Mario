@@ -47,8 +47,6 @@ public class PlayerHealth : Character
 	}
 	
 	IEnumerator PlayerDeath() {
-				
-		// Play losing sting
 		AudioController.PlayLose();
 
 		GetComponent<PlayerMovement>().enabled = false;
@@ -65,9 +63,7 @@ public class PlayerHealth : Character
 		yield return new WaitForSeconds(2.0f);
 		
 		// Death scene
-		GameController.Instance.Restart();
-
-		AudioController.PlayLoop();
+		GameController.Instance.Restart();	   
 		
 		animator.ResetTrigger("Death");
 		
